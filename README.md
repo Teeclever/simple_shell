@@ -1,6 +1,6 @@
 ## Simple Shell Project
 
-**A simple Unix Project that execute command interpreter**
+**A simple shell is a basic implementation of a Unix-like shell, which provides a command-line interface for users to interact with an operating system.**
 ![shell](https://s3.amazonaws.com/intranet-projects-files/holbertonschool-low_level_programming/235/shell.jpeg)
 
 ---
