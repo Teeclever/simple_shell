@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
-  * main - A project that display commandline prompt and takes
+  * main - A project that display command line prompt and takes
   * args and execute the command been typed by the user
   *
   * Return: 0 on success
@@ -52,7 +52,7 @@ int main(void)
 }
 
 /**
-  * fork_command - a function the duplicate process
+  * fork_command - a function that duplicate process
   * @argstr: take in argument
   */
 
