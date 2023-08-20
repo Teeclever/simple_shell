@@ -8,7 +8,6 @@
 
 char *_getenv(const char *str)
 {
-	extern char **environ;
 	int length = lenstr(str);
 	char **envn = NULL;
 
@@ -17,9 +16,9 @@ char *_getenv(const char *str)
 	{
 		if (strncmp_made(str, *envn, length) == 0 && (*env)[length] == '=')
 		{
-			return &(*envn)[length + 1];
+			return (&(*envn)[length + 1]);
 		}
 		envn++;
 	}
-	return NULL;
+	return (NULL);
 }

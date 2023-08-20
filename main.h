@@ -10,7 +10,7 @@
 #include <stdbool.h>
 #include <sys/stat.h>
 
-
+extern char **environ;
 
 void exece_fun(char **args);
 int lenstr(const char *str);
@@ -21,7 +21,7 @@ char *my_getenv(const char *name);
 char *_locationevn(char *command);
 int cmpstr(const char *st1, const char *st2);
 char *catstr(char *str, char *src);
-void env_execute();
+void env_execute(void);
 char *_getenv(const char *str);
 void free_str(char **argstr);
 void fork_command(char **argstr);
