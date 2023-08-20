@@ -10,7 +10,7 @@
 char **tokenalize(char *str, const char *delim)
 {
 	char *strtokcpy = _strdup(str);
-	int countok = 0, int i;
+	int countok = 0, i;
 	char **argstr = NULL;
 	char *strtoken;
 
@@ -33,6 +33,6 @@ char **tokenalize(char *str, const char *delim)
 		strtoken = strtok(NULL, delim);
 	}
 	argstr[countok] = NULL;
-	free(strtocpy);
+	free(strtokcpy);
 	return (argstr);
 }

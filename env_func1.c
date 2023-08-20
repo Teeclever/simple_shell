@@ -14,7 +14,7 @@ char *_getenv(const char *str)
 	envn =  environ;
 	while (*envn != NULL)
 	{
-		if (strncmp_made(str, *envn, length) == 0 && (*env)[length] == '=')
+		if (strncmp_made(str, *envn, length) == 0 && (*envn)[length] == '=')
 		{
 			return (&(*envn)[length + 1]);
 		}

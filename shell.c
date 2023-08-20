@@ -1,27 +1,27 @@
 #include "main.h"
 
 /**
-  * main - A program that display commandline prompt and takes
-  * args and execute the command been typed by the usr
+  * main - A project that display commandline prompt and takes
+  * args and execute the command been typed by the user
   *
   * Return: 0 on success
   */
 
 int main(void)
 {
-	char *strline = NULL, *pathcommand = NULL, size_t n = 0;
+	char *strline = NULL, *pathcommand = NULL, **argstr;
+	size_t n = 0;
 	ssize_t size;
-	char **argstr, bool exinput = false;
+	bool exinput = false;
 
 	while (1 && !exinput)
 	{
 		if (isatty(STDIN_FILENO) == 0)
 			exinput = true;
-		write(STDIN_FlsILENO, "#cisfun$ ", 10);
+		write(STDIN_FILENO, "#cisfun$ ", 10);
 		size = getline(&strline, &n, stdin);
 		if (size == -1)
-		{
-			perror("Eof: Exiting shell.....\n");
+		{	perror("Eof: Exiting shell.....\n");
 			break;
 		}
 		if (strline[size - 1] == '\n')
