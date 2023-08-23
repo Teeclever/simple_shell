@@ -34,19 +34,16 @@ char *made_getline(FILE *source)
 
 void exit_handle(char *strlin)
 {
-	char *token = NULL;
-	int status_exit;
+	char **token = NULL;
+	int status_exit = 0;
 
-	token = strtok(strlin, " ");
+	token = tokenalize(strlin, " \n");
 
-	token = strtok(NULL, " ");
-	if (token != NULL)
+	if (token[1] != NULL)
 	{
-		status_exit = atoi(token);
-		exit(status_exit);
+		status_exit = atoi(token[1]);
+
 	}
-	else
-	{
-		exit(0);
-	}
+	free_str(token);
+	exit(status_exit);
 }

@@ -30,7 +30,7 @@ int main(void)
 			{
 				exit_handle(strline);
 				free(strline);
-				break;
+				continue;
 			}
 			if (cmpstr(strline, "env") == 0)
 			{
