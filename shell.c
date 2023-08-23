@@ -29,8 +29,6 @@ int main(void)
 			if (strncmp_made(strline, "exit", 4) == 0)
 			{
 				exit_handle(strline);
-				free(strline);
-				break;
 			}
 			if (cmpstr(strline, "env") == 0)
 			{
