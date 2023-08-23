@@ -27,7 +27,6 @@ void free_str(char **argstr);
 void fork_command(char **argstr);
 int strncmp_made(const char *st1, const char *st2, size_t i);
 char *made_getline(FILE *source);
-void exit_handle(char *strlin);
 
 #endif
 
