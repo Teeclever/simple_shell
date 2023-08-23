@@ -6,7 +6,7 @@
  * Return: void
  */
 
-void exece_fun(char **argstr)
+void exece_fun(char **argster)
 {
 	char *pathcommand = NULL;
 	char *first_args = NULL;
