@@ -29,7 +29,7 @@ int main(void)
 		if (strline[0] != '\0')
 		{
 			if (strncmp_made(strline, "exit", 4) == 0)
-				break;
+				exit(1);
 			if (cmpstr(strline, "env") == 0)
 			{
 				env_execute();
