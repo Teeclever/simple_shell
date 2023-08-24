@@ -9,18 +9,16 @@
 
 char *_locationevn(char *args_command)
 {
-	char *pathenv;
-	char *copypath;
-	char *token;
-	char *pathfile;
-	int length;
-	int len2;
+	char *pathenv, *copypath = NULL, *token, *pathfile = NULL;
+	int length, len2;
 	struct stat ptr;
 
 	pathenv = _getenv("PATH");
 	if (pathenv)
 	{
 		copypath = _strdup(pathenv);
+		if (!copypath)
+			return (NULL);
 		length = lenstr(args_command);
 		token = strtok(copypath, ":");
 		while (token != NULL)
@@ -31,7 +29,6 @@ char *_locationevn(char *args_command)
 			catstr(pathfile, "/");
 			catstr(pathfile, args_command);
 			catstr(pathfile, "\0");
-
 			if (stat(pathfile, &ptr) == 0)
 			{
 				free(copypath);
