@@ -1,8 +1,8 @@
 #include "main.h"
 
 /**
- * _strdup - a function that duplicatin string
- * @str: sring to be duplicated
+ * _strdup - A function that duplicatin string
+ * @str: sring that will be duplicated
  * Return: the duplicated string
  */
 
