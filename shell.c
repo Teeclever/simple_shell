@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
-  * prompt - A command that print out a promt
+  * prompt - command that print out a promt
   */
 void prompt(void)
 {
