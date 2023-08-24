@@ -4,18 +4,17 @@
  * made_getline - A program that execute just like getline
  * @line: the first argument passed in.
  * @ptr: the second argument passed in
- * Return: the line rad
+ * Return: line read
  */
 
 ssize_t made_getline(char *line, size_t ptr)
 {
 	static char strline_buffer[BUFFER_RANGE];
 	char *braking_point = NULL;
-	static size_t size_buff = 0;
-	static size_t ptrbuff = 0;
+	static size_t size_buff;
+	static size_t ptrbuff;
 	ssize_t sizeline = 0;
-	size_t length;
-	size_t copy_path;
+	size_t length, copy_path;
 
 	while (1)
 	{
