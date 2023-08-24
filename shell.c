@@ -10,20 +10,17 @@
 int main(void)
 {
 	char *strline = NULL, *pathcommand = NULL, **argstr = NULL;
-		int interactive = isatty(STDIN_FILENO);
-	while (1)
+		bool exinput = false;
+	while (1 && !exinput)
 	{
-		if (!interactive && feof(stdin))
-		{	break;
-		}
-		if (interactive)
+		if (isatty(STDIN_FILENO) == 0)
+			exinput = true;
 		write(STDIN_FILENO, "#cisfun$ ", 10);
 			strline = made_getline(stdin);
 			if (strline == NULL)
 			{
-				if (interactive)
-			{	perror("Exiting shell");
-			}
+				perror("Exiting shell");
+				free(strline);
 				break;
 			}
 		if (strline[0] != '\0')
