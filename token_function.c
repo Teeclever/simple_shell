@@ -4,7 +4,7 @@
  * tokenalize - a fuction the split string into two
  * @str: the string to be tokenalized
  * @delim: what to use when slipting
- * Return: its return the slipted string
+ * Return: returns the slipted string
  */
 
 char **tokenalize(char *str, const char *delim)
