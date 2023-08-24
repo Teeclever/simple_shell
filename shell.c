@@ -9,19 +9,21 @@
 
 int main(void)
 {
-	char *strline = NULL, *pathcommand = NULL, **argstr;
-	bool exinput = false;
-
-	while (1 && !exinput)
+	char *strline = NULL, *pathcommand = NULL, **argstr = NULL;
+		int interactive = isatty(STDIN_FILENO);
+	while (1)
 	{
-		if (isatty(STDIN_FILENO) == 0)
-			exinput = true;
+		if (!interactive && feof(stdin))
+		{	break;
+		}
+		if (interactive)
 		write(STDIN_FILENO, "#cisfun$ ", 10);
 			strline = made_getline(stdin);
 			if (strline == NULL)
 			{
-				perror("Exiting shell");
-				free(strline);
+				if (interactive)
+			{	perror("Exiting shell");
+			}
 				break;
 			}
 		if (strline[0] != '\0')
