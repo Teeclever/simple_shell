@@ -26,10 +26,8 @@ int main(void)
 			}
 		if (strline[0] != '\0')
 		{
-			if (cmpstr(strline, "exit") == 0)
-			{	free(strline);
+			if (strncmp_made(strline, "exit", 4) == 0)
 				break;
-			}
 			if (cmpstr(strline, "env") == 0)
 			{
 				env_execute();
