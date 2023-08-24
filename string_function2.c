@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * strncmp_made - A function that takes three argument and compare
+ * strncmp_made - Function that takes three argument and compare
  * @st1: first args a string
  * @st2: second args a string
  * @i: third arg an int
