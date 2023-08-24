@@ -3,7 +3,7 @@
 /**
  * made_getline - A program that execute just like getline
  * @line: the first argument passed in.
- * @ptr: the second argument passed in
+ * @ptr: second argument passed in
  * Return: line read
  */
 
