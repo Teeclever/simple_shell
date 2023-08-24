@@ -2,7 +2,7 @@
 
 /**
  * exece_fun - a function the execute command
- * @argstr: takes in comman
+ * @argstr: takes in command
  * Return: void
  */
 
