@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * _getenv - A function that get envorn varables
+ * _getenv - A function that get environment varables
  * @str: an argument of the path
  * Return: the path
  */
