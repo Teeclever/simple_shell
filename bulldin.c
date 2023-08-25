@@ -45,7 +45,7 @@ void handle_command(char *strline)
 		}
 		else
 		{	free_str(argstr);
-			exit(EXIT_FAILURE);
+			exit(0);
 		}
 		}
 
