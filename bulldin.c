@@ -25,7 +25,7 @@ void env_execute(void)
 void handle_command(char *strline)
 	{
 	char **argstr = NULL, *pathcommand = NULL;
-	int exit_status;
+	int exit_status = 0;
 
 	if (strline[0] != '\0')
 	{
@@ -45,19 +45,19 @@ void handle_command(char *strline)
 		}
 		else
 		{	free_str(argstr);
-			exit(0);
+			exit(EXIT_SUCCESS);
 		}
 		}
 
 		if (cmpstr(strline, "env") == 0)
 		{	env_execute();
 			free_str(argstr);
-		return;
+			return;
 		}
 		pathcommand = _locationevn(argstr[0]);
 		if (pathcommand == NULL)
 		{	perror("Command not found");
-			free_str(argstr);
+			exit(2);
 		}
 		else
 		{	fork_command(argstr);
