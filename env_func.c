@@ -23,7 +23,7 @@ char *_locationevn(char *args_command)
 		token = strtok(copypath, ":");
 		while (token != NULL)
 		{
-			len2 = strlen(token);
+			len2 = lenstr(token);
 			pathfile = malloc(length + len2 + 2);
 			cpystr(pathfile, token);
 			catstr(pathfile, "/");
