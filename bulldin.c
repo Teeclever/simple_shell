@@ -1,7 +1,7 @@
 #include "main.h"
 /**
  * env_execute - A function that execute the environment variable
- * Return: nothing void
+ * Return: nothing
  *
  */
 
@@ -23,8 +23,9 @@ void env_execute(void)
   */
 
 void handle_command(char *strline)
-{
+	{
 	char **argstr = NULL, *pathcommand = NULL;
+	int exit_status;
 
 	if (strline[0] != '\0')
 	{
@@ -34,16 +35,19 @@ void handle_command(char *strline)
 			perror("Error tokenizing command");
 			return;
 		}
+
 		if (cmpstr(strline, "exit") == 0)
 		{
-			bultin_exit(argstr);
-			return;
+		if (argstr[1])
+		{	exit_status = atoi(argstr[1]);
+			free_str(argstr);
+			exit(exit_status);
 		}
 		else
 		{	free_str(argstr);
 			exit(0);
 		}
-		
+		}
 
 		if (cmpstr(strline, "env") == 0)
 		{	env_execute();
@@ -60,35 +64,4 @@ void handle_command(char *strline)
 			free_str(argstr);
 		}
 		}
-	}
-
-/**
-  * bultin_exit - a function that exit command
-  * @argst: the argument
-  */
-
-void bultin_exit(char *argst[])
-{
-	char *line =argst[1];
-	size_t i;
-	int exit_status = 0;
-
-	if (line != NULL)
-	{
-		for (i = 0; i < strlen(line); i++)
-		{
-			if (line[i] < '0' || line[i] > '9')
-			{
-			fprintf(stderr, "invalid exit sytatus: %s\n", line);
-			exit(EXIT_FAILURE);
-			}
-	
-		exit_status = exit_status *10 + (line[i] - '0');
-		}
-		exit_status = 0;
-	}
-	else
-	{
-		exit(EXIT_SUCCESS);
-	}
 }
