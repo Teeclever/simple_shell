@@ -23,9 +23,8 @@ void env_execute(void)
   */
 
 void handle_command(char *strline)
-	{
+{
 	char **argstr = NULL, *pathcommand = NULL;
-	int exit_status;
 
 	if (strline[0] != '\0')
 	{
@@ -38,16 +37,14 @@ void handle_command(char *strline)
 
 		if (cmpstr(strline, "exit") == 0)
 		{
-		if (argstr[1])
-		{	exit_status = atoi(argstr[1]);
-			free_str(argstr);
-			exit(exit_status);
+			builtin_exit(argstr);
+			return;
 		}
 		else
 		{	free_str(argstr);
 			exit(0);
 		}
-		}
+		
 
 		if (cmpstr(strline, "env") == 0)
 		{	env_execute();
@@ -63,5 +60,36 @@ void handle_command(char *strline)
 		{	fork_command(argstr);
 			free_str(argstr);
 		}
+	}
+
+}
+
+/**
+  * builtin_exit - a function that execute exit
+  * @argstr: first arg
+  */
+
+void builtin_exit(char *argst[])
+{
+	char *line = argst[1];
+	size_t i;
+	int exit_status = 0;
+
+	if (line != NULL)
+	{
+		for (i = 0; i< strlen(line); i++)
+		{
+			if (line[i] < '0' || line[i] > '9')
+			{
+				fprintf(stderr, "invalid exit command: %s\n", line);
+				exit(EXIT_FAILURE);
+			}
+			exit_status = exit_status *10 + (line[i] - '0');
 		}
+		exit(exit_status);
+	}
+	else
+	{
+		exit(EXIT_SUCCESS);
+	}
 }

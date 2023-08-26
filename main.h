@@ -31,6 +31,7 @@ void fork_command(char **argstr);
 int strncmp_made(const char *st1, const char *st2, size_t i);
 ssize_t made_getline(char *buf, size_t size);
 void handle_command(char *strline);
+void builtin_exit(char *argstr[]);
 
 #endif
 
