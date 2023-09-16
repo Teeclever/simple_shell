@@ -13,7 +13,6 @@
 extern char **environ;
 
 #define BUFFER_RANGE 1024
-#define MAX_INPUT_LEN 1024
 
 void prompt(void);
 void exece_fun(char **args);
@@ -25,13 +24,13 @@ char *my_getenv(const char *name);
 char *_locationevn(char *command);
 int cmpstr(const char *st1, const char *st2);
 char *catstr(char *str, char *src);
+void env_execute(void);
 char *_getenv(const char *str);
 void free_str(char **argstr);
+void fork_command(char **argstr);
 int strncmp_made(const char *st1, const char *st2, size_t i);
 ssize_t made_getline(char *buf, size_t size);
 void handle_command(char *strline);
 
-int execute_command(char *command_with_args);
-void execute_child_process(char *command, char *args[]);
 #endif
 

@@ -2,46 +2,48 @@
 
 /**
  * _locationevn - is a function the describe to the path variable
- * @command: takes in agument been type by the user
+ * @args_command: takes in agument been type by the user
  *
  * Return: its returns the path location
  */
 
-char *_locationevn(char *command)
+char *_locationevn(char *args_command)
 {
-	char *path, *full_path, *path_env = _getenv("PATH");
-	size_t path_len, full_path_len, command_len;
+	char *pathenv, *copypath = NULL, *token, *pathfile = NULL;
+	int length, len2;
+	struct stat ptr;
 
-	if (path_env == NULL)
+	pathenv = _getenv("PATH");
+	if (pathenv)
 	{
-		return (NULL);
-	}
-
-	path = strtok(path_env, ":");
-	while (path != NULL)
-	{
-		path_len = lenstr(path);
-		command_len = lenstr(command);
-		full_path_len = path_len + command_len + 2;
-
-		full_path = malloc(full_path_len);
-		if (full_path == NULL)
-		{
-			perror("malloc");
+		copypath = _strdup(pathenv);
+		if (!copypath)
 			return (NULL);
-		}
-
-		cpystr(full_path, path);
-		full_path[path_len] = '/';
-	cpystr(full_path + path_len + 1, command);
-
-		if (access(full_path, X_OK) == 0)
+		length = lenstr(args_command);
+		token = strtok(copypath, ":");
+		while (token != NULL)
 		{
-			return (full_path);
+			len2 = lenstr(token);
+			pathfile = malloc(length + len2 + 2);
+			cpystr(pathfile, token);
+			catstr(pathfile, "/");
+			catstr(pathfile, args_command);
+			catstr(pathfile, "\0");
+			if (stat(pathfile, &ptr) == 0)
+			{
+				free(copypath);
+				return (pathfile);
+			}
+			else
+			{
+				free(pathfile);
+				token = strtok(NULL, ":");
+			}
 		}
-
-		free(full_path);
-		path = strtok(NULL, ":");
+		free(copypath);
+		if (stat(args_command, &ptr) == 0)
+			return (args_command);
+		return (NULL);
 	}
 	return (NULL);
 }

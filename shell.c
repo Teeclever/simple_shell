@@ -19,6 +19,8 @@ int main(void)
 {
 	char strline[100];
 	ssize_t size;
+	char **runtime;
+	int i;
 
 	while (1)
 	{
@@ -32,11 +34,49 @@ int main(void)
 	}
 
 	if (strline[size - 1] == '\n')
-		strline[size - 1] = '\0';
-
-	handle_command(strline);
+	strline[size - 1] = '\0';
+	
+	runtime = tokenalize(strline, ";");
+	if(!runtime)
+	{
+		perror("error in command");
+		continue;
+	}
+	for (i = 0; runtime[i] != NULL; i++)
+	{
+		handle_command(runtime[i]);
+	}
+	free_str(runtime);
 	}
 	return (0);
+}
+
+ 
+/**
+  * fork_command - a function that duplicate process
+  * @argstr: take in argument
+  */
+
+
+void fork_command(char **argstr)
+{
+	pid_t child = fork();
+
+	if (child == -1)
+	{
+		perror("error the process fail");
+		exit(1);
+	}
+	if (child == 0)
+	{
+		exece_fun(argstr);
+		exit(0);
+	}
+	else
+	{
+		wait(NULL);
+	}
+
 }
 
 /**
