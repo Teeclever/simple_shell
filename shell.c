@@ -5,7 +5,11 @@
   */
 void prompt(void)
 {
-	write(STDIN_FILENO, "#cisfun$ ", 10);
+	if (isatty(STDIN_FILENO) == 1)
+	{
+		write(STDOUT_FILENO, "$cisfun ", 8);
+		fflush(stdout);
+	}
 }
 
 /**
@@ -37,34 +41,6 @@ int main(void)
 	handle_command(strline);
 	}
 	return (0);
-}
-
- 
-/**
-  * fork_command - a function that duplicate process
-  * @argstr: take in argument
-  */
-
-
-void fork_command(char **argstr)
-{
-	pid_t child = fork();
-
-	if (child == -1)
-	{
-		perror("error the process fail");
-		exit(1);
-	}
-	if (child == 0)
-	{
-		exece_fun(argstr);
-		exit(0);
-	}
-	else
-	{
-		wait(NULL);
-	}
-
 }
 
 /**
