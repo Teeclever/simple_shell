@@ -5,11 +5,7 @@
   */
 void prompt(void)
 {
-	if (isatty(STDIN_FILENO) == 1)
-	{
-		write(STDOUT_FILENO, "$cisfun ", 8);
-		fflush(stdout);
-	}
+	write(STDIN_FILENO, "#cisfun$ ", 10);
 }
 
 /**
